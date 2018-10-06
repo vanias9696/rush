@@ -14,7 +14,7 @@ int			Object::getYPos(void)
 	return(_yPos);
 }
 
-int			Object::getSizeX(void)
+/*int			Object::getSizeX(void)
 {
 	return(_sizeX);
 }
@@ -28,6 +28,11 @@ std::string	Object::getColor(void)
 {
 	return(_color);
 }
+*/
+char	Object::getSign(void)
+{
+	return(_sign);
+}
 
 void		Object::setXPos(int n)
 {
@@ -38,7 +43,7 @@ void		Object::setYPos(int n)
 {
 	_yPos = n;
 }
-
+/*
 void		Object::setSizeX(int n)
 {
 	_sizeX = n;
@@ -53,5 +58,4 @@ void		Object::setColor(std::string str)
 {
 	_color = str;
 }
-
-
+*/
