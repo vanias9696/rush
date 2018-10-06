@@ -2,10 +2,10 @@
 
 Player::Player()
 {
-	_xPos = 50;
-	_yPos = 50;
+	_xPos = 20;
+	_yPos = 20;
+	_wideFig = 3;
 	// _whereX = 47;//поле ширина 99, при чому з 0, середина на 50
-	_sign	= '*';
 	// _life	= 3;
 }
 

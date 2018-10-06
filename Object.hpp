@@ -1,5 +1,6 @@
 #ifndef OBJECT_HPP
 #define OBJECT_HPP
+#include <string>
 
 class Object
 {
@@ -15,7 +16,7 @@ class Object
 		// int				getSizeX(void);
 		// int				getSizeY(void);
 		// std::string		getColor(void);
-		char			getSign(void);
+		std::string			getSign(void);
 
 		void			setXPos(int n);
 		void			setYPos(int n);
@@ -26,10 +27,12 @@ class Object
 	protected:
 		int				_xPos;
 		int				_yPos;
+		int				_wide;
+		int				_hight;
+		int				_wideFig;
 		// int				_sizeX;
 		// int				_sizeY;
 		// std::string		_color;
-		char			_sign;
 };
 
 #endif
