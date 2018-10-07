@@ -13,6 +13,7 @@
 #include "Viewer.hpp"
 #include "Background.hpp"
 #include <stdio.h>
+#include <unistd.h>
 
 
 #endif

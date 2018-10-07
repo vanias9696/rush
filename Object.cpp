@@ -24,22 +24,6 @@ int			Object::getYPos(void)
 	return(_yPos);
 }
 
-/*int			Object::getSizeX(void)
-{
-	return(_sizeX);
-}
-
-int			Object::getSizeY(void)
-{
-	return(_sizeY);
-}
-
-std::string	Object::getColor(void)
-{
-	return(_color);
-}
-*/
-
 void		Object::setXPos(int n)
 {
 	_xPos = n;
@@ -53,28 +37,16 @@ void		Object::setYPos(int n)
 {
 	_yPos = n;
 }
-/*
-void		Object::setSizeX(int n)
+
+Object & Object::operator=( Object const &rhs )
 {
-	_sizeX = n;
+	if(this != &rhs)
+		return *this;
+	return *this;
 }
 
-void		Object::setSizeY(int n)
+Object::Object(Object const &src)
 {
-	_sizeY = n;
+	*this = src;
+	return ;
 }
-
-void		Object::setColor(std::string str)
-{
-	_color = str;
-}
-*/
-
-// void	Player::moving(int n)
-// {
-// 	_whereX += n;
-// 	if (_whereX < 2)
-// 		_whereX = 2;
-// 	else if (_whereX > 96)
-// 		_whereX = 96;
-// }

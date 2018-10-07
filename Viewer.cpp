@@ -19,6 +19,10 @@ Viewer::Viewer(){
 
 Viewer::~Viewer()
 {
+	my_clear(_win);
+	game_over();
+	wrefresh(_win);
+	sleep(2);
 	delwin(_win);
 	endwin();
 }
@@ -75,6 +79,22 @@ void Viewer::welcome_window()
 	attroff(COLOR_PAIR(1));
 }
 
+void Viewer::game_over()
+{
+	init_pair(3, COLOR_RED, COLOR_BLACK);
+
+	wattron(_win, COLOR_PAIR(3));
+	mvwprintw(_win, 10, 20,"   __ _  __ _ _ __ ___   ___    _____   _____ _ __ ");
+	mvwprintw(_win, 11, 20,"  / _` |/ _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__|");
+	mvwprintw(_win, 12, 20," | (_| | (_| | | | | | |  __/ | (_) \\ V /  __/ |    ");
+	mvwprintw(_win, 13, 20,"  \\__, |\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|   ");
+	mvwprintw(_win, 14, 20,"   __/ |                                           ");
+	mvwprintw(_win, 15, 20,"  |___/                                            ");
+	mvwprintw(_win, 16, 20,"                                          ");
+	// mvaddstr(17, 25,"");
+	wattroff(_win, COLOR_PAIR(3));
+}
+
 void	Viewer::print_shots(Player* p)
 {
 	init_pair(2, COLOR_RED, COLOR_BLACK);
@@ -91,6 +111,17 @@ void 	Viewer::print_background(Background *b)
 	for (int i = 0; i < b->getNumStars(); ++i)
 	{
 		mvwprintw(_win, b->getYPosN(i), b->getXPosN(i), "*");
+	}
+}
+
+void	Viewer::my_clear(WINDOW *_win)
+{
+	for (int i = 0; i < 120; ++i)
+	{
+		for (int j = 0; j < 50; ++j)
+		{
+			mvwaddch(_win, j, i, ' ');
+		}
 	}
 }
 
@@ -118,21 +149,10 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 		else if(ch == 'q' || ch == 'Q')
 			break;
 		if (i % 300 == 0)
-		{
 			p->moving_shot();
-		}
 		if (i % 700 == 0)
-		{
 			_bg->moving_star();
-		}
-		// wclear(_win);
-		for (int i = 0; i < 120; ++i)
-		{
-			for (int j = 0; j < 50; ++j)
-			{
-				mvwaddch(_win, j, i, ' ');
-			}
-		}
+		my_clear(_win);
 		print_background(_bg);
 		draw_borders(_win);
 		print_shots(p);

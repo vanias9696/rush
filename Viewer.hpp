@@ -18,15 +18,17 @@ class Viewer
 		Viewer(Viewer const &src);
 		Viewer	&operator=( Viewer const &rhs );
 
-		WINDOW*		getWindow(void) const;
+		WINDOW*			getWindow(void) const;
 
 
-		void 		draw_borders(WINDOW *screen);
-		void 		welcome_window();
-		int 		onScreen(Player* p, int ch, Viewer *v);
-		void		print_shots(Player* p);
-		void		print_background(Background *b);
+		void 			draw_borders(WINDOW *screen);
+		void 			welcome_window();
+		void 			game_over();
+		int 			onScreen(Player* p, int ch, Viewer *v);
+		void			print_shots(Player* p);
+		void			print_background(Background *b);
 		std::time_t 	getTime(void);
+		void			my_clear(WINDOW *_win);
 };
 
 #endif
