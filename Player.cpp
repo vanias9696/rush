@@ -75,5 +75,7 @@ int			Player::getYPosN(int N)
 		tmp = tmp->next;
 		N--;
 	}
+	if (!tmp)
+		return -1;
 	return (tmp->shot->getYPos());
 }

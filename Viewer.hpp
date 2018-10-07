@@ -1,7 +1,6 @@
 #ifndef VIEWER_HPP
 #define VIEWER_HPP
-#include <ncurses.h>
-#include "Player.hpp"
+#include "Header.hpp"
 
 class Viewer
 {

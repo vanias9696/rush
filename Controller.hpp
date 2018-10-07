@@ -1,6 +1,8 @@
 #ifndef CONTROLLER_HPP
 #define CONTROLLER_HPP
-#include "Viewer.hpp"
+#include "Header.hpp"
+
+class Viewer;
 
 class Controller
 {

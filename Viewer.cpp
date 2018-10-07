@@ -1,4 +1,4 @@
-#include "Viewer.hpp"
+#include "Header.hpp"
 
 Viewer::Viewer(){
 	initscr();
@@ -79,33 +79,30 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 
 	if(ch == 'q' || ch =='Q') 
 		return 0;
-	wclear(v->getWindow());
-	v->draw_borders(v->getWindow());
-	 mvwprintw(v->getWindow(), p->getYPos(), p->getXPos(),"---");
-	 wrefresh(v->getWindow());
+	wclear(_win);
+	v->draw_borders(_win);
+	mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
+	wrefresh(_win);
 
 	while(1)
 	{
 		ch = getch();
 		
-		if(ch == KEY_LEFT) {
+		if(ch == KEY_LEFT)
 			p->setXPos(p->getXPos() - 1);
-			wclear(v->getWindow());
-			v->draw_borders(v->getWindow());
-			mvwprintw(v->getWindow(), p->getYPos(), p->getXPos(),"---");
-			wrefresh(v->getWindow());
-		}
-		else if(ch == KEY_RIGHT) {
+		else if(ch == KEY_RIGHT)
 			p->setXPos(p->getXPos() + 1);
-			wclear(v->getWindow());
-			v->draw_borders(v->getWindow());
-			 mvwprintw(v->getWindow(), p->getYPos(), p->getXPos(),"---");
-			wrefresh(v->getWindow());
-		}
-		else if(ch == 'q' || ch == 'Q') {
+		else if (ch == ' ')
+			p->haveShot();
+		else if(ch == 'q' || ch == 'Q')
 			break;
-		}
-		wrefresh(v->getWindow());
+		wclear(_win);
+		draw_borders(_win);
+		print_shots();
+		// if (p->getYPosN(0) != -1)
+		// 	mvwprintw(_win, p->getYPosN(0), p->getXPosN(0),"o");
+		mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
+		wrefresh(_win);
 	}
 	return (0);
 }
