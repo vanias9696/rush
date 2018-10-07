@@ -1,34 +1,30 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
-#include "Object.hpp"
+#include "Header.hpp"
+
+class Shot;
 
 class Player : public Object
 {
-	// private:
-	// 	int		_whereX;
+	typedef struct s_list
+	{
+		Shot		*shot;
+		s_list		*next;
+	}				t_shot;
+
+	private:
+		t_shot		*_list;
 		// int		_life;
 
 	public:
 		Player();
 		~Player();
+		void	haveShot();
+		// Player(Player const &rfs);
+		// Player	&operator=( Player const &rfs );
+		int			getXPosN(int N);
+		int			getYPosN(int N);
 
-		// void	moving(int n);	
-		
-
-	
 };
 
 #endif
-
-
-// private:
-// 		std::string _name;    
-// 		int			_ap;
-// 		AWeapon		*_wpn;
-
-// 	public:
-// 		Character();
-// 		~Character();
-// 		Character(std::string const & name);
-// 		Character(Character const &rfs);
-// 		Character	&operator=( Character const &rfs );

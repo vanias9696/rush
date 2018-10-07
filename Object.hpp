@@ -1,6 +1,7 @@
 #ifndef OBJECT_HPP
 #define OBJECT_HPP
-#include <string>
+
+#include "Header.hpp"
 
 class Object
 {
@@ -27,7 +28,7 @@ class Object
 	protected:
 		int				_xPos;
 		int				_yPos;
-		int				_wide;
+		int 			_wide;
 		int				_hight;
 		int				_wideFig;
 		// int				_sizeX;
