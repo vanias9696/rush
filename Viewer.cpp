@@ -10,7 +10,7 @@ Viewer::Viewer(){
 	curs_set(FALSE);
 	start_color();
 
-	_win = newwin(50, 120, 0, 0);
+	_win = newwin(51, 120, 0, 0);
 	nodelay(_win, true);
 	_time = std::time(nullptr);
 	welcome_window();
@@ -91,7 +91,6 @@ void Viewer::game_over()
 	mvwprintw(_win, 14, 20,"   __/ |                                           ");
 	mvwprintw(_win, 15, 20,"  |___/                                            ");
 	mvwprintw(_win, 16, 20,"                                          ");
-	// mvaddstr(17, 25,"");
 	wattroff(_win, COLOR_PAIR(3));
 }
 
@@ -132,7 +131,7 @@ void	Viewer::my_clear(WINDOW *_win)
 {
 	for (int i = 0; i < 120; ++i)
 	{
-		for (int j = 0; j < 50; ++j)
+		for (int j = 0; j < 51; ++j)
 		{
 			mvwaddch(_win, j, i, ' ');
 		}
@@ -176,13 +175,20 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 			if (e->check_player(p) == -1)
 				break;
 		}
-
 		my_clear(_win);
 		print_background(_bg);
 		draw_borders(_win);
 		print_shots(p);
 		print_enemy(e);
 		mvwprintw(_win, p->getYPos(), p->getXPos(),"###");
+		wattron(_win, COLOR_PAIR(1));
+		mvwprintw(_win, 49, 2, "Your Score is : %d", p->getScore());
+
+		std::time_t result = std::time(nullptr) - _time;
+		std::localtime(&result);
+		mvwprintw(_win, 49, 30, "Loser you wasted %d seconds playing", result);
+		mvwprintw(_win, 49, 100, "To quit PRESS Q");
+		wattroff(_win, COLOR_PAIR(1));
 		wrefresh(_win);
 	}
 	return (0);

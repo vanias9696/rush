@@ -52,7 +52,7 @@ void	Background::haveStar()
 	else
 	{
 		tmp = _stars;
-		while(tmp->next)
+		while(tmp && tmp->next)
 			tmp = tmp->next;
 		tmp->next = new(t_star);
 		tmp->next->star = star;

@@ -6,8 +6,7 @@ Player::Player()
 	_yPos = 48;
 	_wideFig = 3;
 	_list = NULL;
-	// _whereX = 47;//поле ширина 99, при чому з 0, середина на 50
-	// _life	= 3;
+	_score = 0;
 }
 
 Player::~Player()
@@ -36,6 +35,8 @@ Player	&Player::operator=(Player const &rhs )
 	return *this;
 }
 
+int		Player::getScore(void) const{ return _score;}
+
 void	Player::haveShot()
 {
 	t_shot *tmp;
@@ -54,6 +55,7 @@ void	Player::haveShot()
 		{
 			if ((tmp->shot->getXPos() == _xPos + 1) && (tmp->shot->getYPos() == 47))
 			{
+				_score++;
 				delete shot;
 				return;
 			}
@@ -128,7 +130,9 @@ void	Player::moving_shot()
 	{
 		tmp->next->shot->setYPos(tmp->next->shot->getYPos() - 1);
 		if (tmp->next->shot->getYPos() <= 0)
+		{
 			delete_shot(tmp);
+		}
 		tmp = tmp->next;
 	}
 }
@@ -155,6 +159,7 @@ int	Player::check_enemy(int x, int y, Enemy *enemy)
 				x - 2 == tmp->next->enemy->getXPos() || x - 3 == tmp->next->enemy->getXPos()
 				|| x - 4 == tmp->next->enemy->getXPos()))
 		{
+			_score++;
 			enemy->delete_enemy(1, tmp);
 			return (1);
 		}

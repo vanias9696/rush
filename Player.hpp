@@ -15,20 +15,23 @@ class Player : public Object
 
 	private:
 		t_shot		*_list;
-		// int		_life;
+		int			_score;
 
 	public:
 		Player();
 		~Player();
-		void	haveShot();
-		void	delete_shot(t_shot *delNext);
-		void	moving_shot();
 		Player(Player const &rfs);
 		Player	&operator=( Player const &rfs );
+
+
+		void		haveShot();
+		void		delete_shot(t_shot *delNext);
+		void		moving_shot();
 		int			getXPosN(int N);
 		int			getYPosN(int N);
-		int	check_enemy(int x, int y, Enemy *enemy);
-		void check_kill(Enemy *enemy);
+		int			getScore(void) const;
+		int			check_enemy(int x, int y, Enemy *enemy);
+		void 		check_kill(Enemy *enemy);
 
 };
 

@@ -36,7 +36,7 @@ void	Enemy::addEnemy(int x, int y)
 		return ;
 	}
 	tmp = _list;
-	while(tmp->next)
+	while(tmp && tmp->next)
 	{
 		tmp = tmp->next;
 	}
