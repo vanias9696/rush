@@ -11,6 +11,7 @@
 #include "Enemy.hpp"
 #include "Controller.hpp"
 #include "Viewer.hpp"
+#include "Background.hpp"
 
 
 #endif

@@ -2,10 +2,14 @@
 #define VIEWER_HPP
 #include "Header.hpp"
 
+class Background;
+
 class Viewer
 {
 	private:
 		WINDOW 		*_win;
+		Background*  _bg;
+		std::time_t	_time;
 
 
 	public:
@@ -21,6 +25,8 @@ class Viewer
 		void 		welcome_window();
 		int 		onScreen(Player* p, int ch, Viewer *v);
 		void		print_shots(Player* p);
+		void		print_background(Background *b);
+		std::time_t 	getTime(void);
 };
 
 #endif

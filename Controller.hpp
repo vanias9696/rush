@@ -7,9 +7,8 @@ class Viewer;
 class Controller
 {
 	private:
-		int	_score;
-		int _level;
-		std::time_t	_time;
+		int			_score;
+		int			_level;
 
 	public:
 		Controller();
@@ -23,7 +22,6 @@ class Controller
 		void 			setScore(int score);
 		int 			getLevel(void);
 		int 			getScore(void);
-		std::time_t 	getTime(void);
 };
 
 #endif

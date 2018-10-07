@@ -5,6 +5,12 @@ Object::Object()
 	_wide = 120;
 	_hight = 50;
 }
+//for background
+Object::Object(int x, int y)
+{
+	_xPos = x;
+	_yPos = y;
+}
 
 Object::~Object(){}
 

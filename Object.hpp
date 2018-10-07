@@ -7,6 +7,7 @@ class Object
 {
 	public:
 		Object(void);
+		Object(int x, int y);
 		Object(Object const &rfs);
 		~Object(void);
 

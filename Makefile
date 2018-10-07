@@ -1,6 +1,6 @@
 NAME = ft_retro
 
-SRCS = main.cpp Object.cpp Shot.cpp\
+SRCS = main.cpp Object.cpp Shot.cpp Background.cpp\
 Player.cpp Viewer.cpp Controller.cpp Enemy.cpp\
 
 OBJ = $(SRCS:.cpp=.o)

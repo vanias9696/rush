@@ -1,6 +1,7 @@
 #include "Header.hpp"
 
 Viewer::Viewer(){
+	_bg = new Background();
 	initscr();
 	clear();
 	noecho();
@@ -10,6 +11,8 @@ Viewer::Viewer(){
 	start_color();
 
 	_win = newwin(50, 120, 0, 0);
+	nodelay(_win, true);
+	_time = std::time(nullptr);
 	welcome_window();
 	draw_borders(_win);
 }
@@ -33,7 +36,8 @@ Viewer & Viewer::operator=( Viewer const &rhs )
 	return *this;
 }
 
-WINDOW*	Viewer::getWindow() const{return _win;}
+WINDOW*		Viewer::getWindow() const{return _win;}
+std::time_t Viewer::getTime(void){return _time;};
 
 void Viewer::draw_borders(WINDOW *screen)
 { 
@@ -79,39 +83,47 @@ void	Viewer::print_shots(Player* p)
 	}
 }
 
+// void 	Viewer::print_background(Background *b)
+// {
+// 	for (int i = 0; i < b->getNumStars(); ++i)
+// 	{
+// 		mvwprintw(_win, b->_stars->star->getXPos(), b->_stars->star->getYPos();,"*");
+// 	}
+// }
+
 int Viewer::onScreen(Player* p , int ch, Viewer *v)
 {
-
+	int i;
 	if(ch == 'q' || ch =='Q') 
 		return 0;
 	wclear(_win);
 	v->draw_borders(_win);
 	mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
 	wrefresh(_win);
-
-	while(1)
+	i = 0;
+	while (1)
 	{
-		ch = getch();
-		
-		if(ch == KEY_LEFT)
+		i++;
+		ch = 0;
+		ch = wgetch(_win);
+		if(ch == 'a' || ch == 'A')
 			p->setXPos(p->getXPos() - 1);
-		else if(ch == KEY_RIGHT)
+		else if(ch == 'd' || ch == 'D')
 			p->setXPos(p->getXPos() + 1);
 		else if (ch == ' ')
 			p->haveShot();
 		else if(ch == 'q' || ch == 'Q')
 			break;
+		if (i % 300 == 0)
+		{
+			// p->setYPos(p->getYPos() - 1);
+		}
 		wclear(_win);
 		draw_borders(_win);
+		// print_background(_bg);
 		print_shots(p);
 		mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
 		wrefresh(_win);
 	}
-
-	// std::time_t now = std::time(nullptr);
-	// std::time_t sec = now - _time;
-
-	//  std::cout << std::asctime(std::localtime(&result))
- //              << result << " seconds since the Epoch\n";
 	return (0);
 }
