@@ -5,7 +5,9 @@
 class Viewer
 {
 	private:
-		WINDOW *_win;
+		WINDOW 		*_win;
+		std::time	_time;
+
 
 	public:
 		Viewer();
@@ -13,10 +15,13 @@ class Viewer
 		Viewer(Viewer const &src);
 		Viewer	&operator=( Viewer const &rhs );
 
-		WINDOW*	getWindow(void) const;
-		void 	draw_borders(WINDOW *screen);
-		void 	welcome_window();
-		int 	onScreen(Player* p, int ch, Viewer *v);
+		WINDOW*		getWindow(void) const;
+		std::time 	getTime(void);
+
+
+		void 		draw_borders(WINDOW *screen);
+		void 		welcome_window();
+		int 		onScreen(Player* p, int ch, Viewer *v);
 };
 
 #endif

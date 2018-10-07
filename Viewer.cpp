@@ -10,6 +10,7 @@ Viewer::Viewer(){
 	start_color();
 
 	_win = newwin(50, 120, 0, 0);
+	_time = std::time(nullptr);
 	welcome_window();
 	draw_borders(_win);
 }
@@ -33,10 +34,8 @@ Viewer & Viewer::operator=( Viewer const &rhs )
 	return *this;
 }
 
-WINDOW*	Viewer::getWindow() const
-{
-	return _win;
-}
+WINDOW*	Viewer::getWindow() const{return _win;}
+std::time 	Viewer::getTime(void){return _time};
 
 void Viewer::draw_borders(WINDOW *screen)
 { 
@@ -98,6 +97,7 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 			break;
 		wclear(_win);
 		draw_borders(_win);
+		// background();
 		print_shots();
 		// if (p->getYPosN(0) != -1)
 		// 	mvwprintw(_win, p->getYPosN(0), p->getXPosN(0),"o");
