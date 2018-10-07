@@ -157,14 +157,17 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 			p->haveShot();
 		else if(ch == 'q' || ch == 'Q')
 			break;
-		if (i % 300 == 0)
-			p->moving_shot();
 		if (i % 1000 == 0)
 			_bg->moving_star();
 		if (i % 900 == 0)
 			e->move();
 		if (i % 2700 == 0)
 			e->addRow();
+		if (i % 300 == 0)
+		{
+			p->moving_shot();
+			p->check_kill(e);
+		}
 //
 //
 		my_clear(_win);

@@ -121,9 +121,87 @@ void	Player::moving_shot()
 }
 
 
+int	Player::check_enemy(int x, int y, Enemy *enemy)
+{
+	t_enemy *tmp;
+
+	tmp = enemy->_list;
+	if ((y == tmp->enemy->getYPos() ||
+			y - 1 == tmp->enemy->getYPos()) && 
+			(x == tmp->enemy->getXPos() || x - 1 == tmp->enemy->getXPos() ||
+			x - 2 == tmp->enemy->getXPos() || x - 3 == tmp->enemy->getXPos()
+			|| x - 4 == tmp->enemy->getXPos()))
+	{
+		enemy->delete_enemy(0, tmp);
+	}
+	while (tmp && tmp->next)
+	{
+		if ((y == tmp->next->enemy->getYPos() ||
+				y - 1 == tmp->next->enemy->getYPos()) && 
+				(x == tmp->next->enemy->getXPos() || x - 1 == tmp->next->enemy->getXPos() ||
+				x - 2 == tmp->next->enemy->getXPos() || x - 3 == tmp->next->enemy->getXPos()
+				|| x - 4 == tmp->next->enemy->getXPos()))
+		{
+			enemy->delete_enemy(1, tmp);
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
 
+void Player::check_kill(Enemy *enemy)
+{
+	t_shot *tmp;
 
+	tmp = _list;
+
+	while (tmp && check_enemy(tmp->shot->getXPos(), tmp->shot->getYPos() , enemy) == 1)
+	{
+		tmp = tmp->next;
+		delete _list->shot;
+		if (tmp)
+			*(_list) = *tmp;
+		else
+			_list = NULL;
+	}
+	while (tmp && tmp->next)
+	{
+		if (check_enemy(tmp->next->shot->getXPos(), tmp->next->shot->getYPos() , enemy) == 1)
+		{
+			delete_shot(tmp);
+		}
+		else
+			tmp = tmp->next;
+	}
+}
+
+
+/*
+
+	{
+		tmp_enemy = enemy._list;
+		while(tmp_enemy)
+		{
+			if (tmp_shot->shot->_yPos == tmp_enemy->enemy->getYPos() ||
+				tmp_shot->shot->_yPos - 1 == tmp_enemy->enemy->getYPos())
+			{
+				if (tmp_shot->shot->_xPos == tmp_enemy->enemy->getXPos() ||
+					tmp_shot->shot->_xPos - 1 == tmp_enemy->enemy->getXPos() ||
+					tmp_shot->shot->_xPos - 2 == tmp_enemy->enemy->getXPos() ||
+					tmp_shot->shot->_xPos - 3 == tmp_enemy->enemy->getXPos() ||
+					tmp_shot->shot->_xPos - 4 == tmp_enemy->enemy->getXPos())
+				{
+					delete_en_sh(tmp_enemy, tmp_shot, e);
+				}
+			}
+
+		}
+		tmp_shot = tmp_shot->next;
+	}
+
+*/
 
 
 

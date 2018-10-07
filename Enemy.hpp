@@ -1,14 +1,11 @@
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
-#include "Object.hpp"
+#include "Header.hpp"
+
+typedef struct s_list t_enemy;
 
 class Enemy: public Object
 {
-	typedef struct s_list
-	{
-		Enemy		*enemy;
-		s_list		*next;
-	}				t_enemy;
 
 	public:
 		Enemy();
@@ -24,7 +21,7 @@ class Enemy: public Object
 		int			getXPosN(int N);
 		int			getYPosN(int N);
 
-	private:
+	// private:
 		t_enemy *_list;
 
 };

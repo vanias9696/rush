@@ -15,6 +15,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
+typedef struct s_list
+{
+	Enemy		*enemy;
+	s_list		*next;
+}				t_enemy;
+
 
 #endif
 

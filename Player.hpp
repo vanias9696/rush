@@ -3,6 +3,7 @@
 #include "Header.hpp"
 
 class Shot;
+class Enemy;
 
 class Player : public Object
 {
@@ -26,6 +27,8 @@ class Player : public Object
 		// Player	&operator=( Player const &rfs );
 		int			getXPosN(int N);
 		int			getYPosN(int N);
+		int	check_enemy(int x, int y, Enemy *enemy);
+		void check_kill(Enemy *enemy);
 
 };
 
