@@ -6,9 +6,6 @@ class Viewer;
 
 class Controller
 {
-	private:
-		int			_score;
-		int			_level;
 
 	public:
 		Controller();

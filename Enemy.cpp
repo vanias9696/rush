@@ -1,11 +1,14 @@
 #include "Header.hpp"
 
-Enemy::Enemy(){}
+Enemy::Enemy(){
+	_list = NULL;
+}
 
 Enemy::Enemy(int x, int y)
 {
 	_xPos = x;
 	_yPos = y;
+	_list = NULL;
 }
 
 Enemy::~Enemy(){}

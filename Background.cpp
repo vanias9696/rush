@@ -3,6 +3,7 @@
 Background::Background(){
 	srand( time( NULL ) );
 	_numStars = 100;
+	_stars = NULL;
 	for (int i = 0; i < _numStars; ++i)
 	{
 		haveStar();
