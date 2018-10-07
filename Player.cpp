@@ -194,11 +194,3 @@ void Player::check_kill(Enemy *enemy)
 			tmp = tmp->next;
 	}
 }
-
-
-
-
-
-
-
-

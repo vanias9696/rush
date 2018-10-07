@@ -21,6 +21,4 @@ typedef struct s_list
 	s_list		*next;
 }				t_enemy;
 
-
 #endif
-

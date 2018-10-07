@@ -144,19 +144,3 @@ int	Enemy::check_player(Player *p)
 	}
 	return (1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
