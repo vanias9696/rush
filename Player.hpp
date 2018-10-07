@@ -23,8 +23,8 @@ class Player : public Object
 		void	haveShot();
 		void	delete_shot(t_shot *delNext);
 		void	moving_shot();
-		// Player(Player const &rfs);
-		// Player	&operator=( Player const &rfs );
+		Player(Player const &rfs);
+		Player	&operator=( Player const &rfs );
 		int			getXPosN(int N);
 		int			getYPosN(int N);
 		int	check_enemy(int x, int y, Enemy *enemy);

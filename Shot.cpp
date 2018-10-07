@@ -9,3 +9,16 @@ Shot::Shot(int x, int y)
 }
 
 Shot::~Shot(){}
+
+Shot::Shot(Shot const &src)
+{
+	*this = src;
+	return ;
+}
+
+Shot	&Shot::operator=(Shot const &rhs )
+{
+	if(this != &rhs)
+		return *this;
+	return *this;
+}

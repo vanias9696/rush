@@ -21,7 +21,6 @@ class Enemy: public Object
 		int			getXPosN(int N);
 		int			getYPosN(int N);
 
-	// private:
 		t_enemy *_list;
 
 };

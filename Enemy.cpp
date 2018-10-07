@@ -10,8 +10,18 @@ Enemy::Enemy(int x, int y)
 
 Enemy::~Enemy(){}
 
-// Enemy::Enemy(Enemy const &src);
-// Enemy::Enemy	&operator=( Enemy const &rhs );
+Enemy::Enemy(Enemy const &src)
+{
+	*this = src;
+	return ;
+}
+
+Enemy	&Enemy::operator=(Enemy const &rhs )
+{
+	if(this != &rhs)
+		return *this;
+	return *this;
+}
 
 void	Enemy::addEnemy(int x, int y)
 {

@@ -23,6 +23,19 @@ Player::~Player()
 	}
 }
 
+Player::Player(Player const &src)
+{
+	*this = src;
+	return ;
+}
+
+Player	&Player::operator=(Player const &rhs )
+{
+	if(this != &rhs)
+		return *this;
+	return *this;
+}
+
 void	Player::haveShot()
 {
 	t_shot *tmp;
@@ -176,32 +189,6 @@ void Player::check_kill(Enemy *enemy)
 			tmp = tmp->next;
 	}
 }
-
-
-/*
-
-	{
-		tmp_enemy = enemy._list;
-		while(tmp_enemy)
-		{
-			if (tmp_shot->shot->_yPos == tmp_enemy->enemy->getYPos() ||
-				tmp_shot->shot->_yPos - 1 == tmp_enemy->enemy->getYPos())
-			{
-				if (tmp_shot->shot->_xPos == tmp_enemy->enemy->getXPos() ||
-					tmp_shot->shot->_xPos - 1 == tmp_enemy->enemy->getXPos() ||
-					tmp_shot->shot->_xPos - 2 == tmp_enemy->enemy->getXPos() ||
-					tmp_shot->shot->_xPos - 3 == tmp_enemy->enemy->getXPos() ||
-					tmp_shot->shot->_xPos - 4 == tmp_enemy->enemy->getXPos())
-				{
-					delete_en_sh(tmp_enemy, tmp_shot, e);
-				}
-			}
-
-		}
-		tmp_shot = tmp_shot->next;
-	}
-
-*/
 
 
 

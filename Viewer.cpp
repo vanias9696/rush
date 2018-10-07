@@ -168,8 +168,7 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 			p->moving_shot();
 			p->check_kill(e);
 		}
-//
-//
+
 		my_clear(_win);
 		print_background(_bg);
 		draw_borders(_win);
