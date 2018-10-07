@@ -52,11 +52,6 @@ void		Object::setXPos(int n)
 void		Object::setYPos(int n)
 {
 	_yPos = n;
-	if (n <= 0)
-		_xPos = 1;
-	if (n > _hight - 2)
-		_xPos = _hight - 2;
-
 }
 /*
 void		Object::setSizeX(int n)

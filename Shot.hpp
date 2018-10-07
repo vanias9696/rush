@@ -11,7 +11,6 @@ class Shot : public Object
 		~Shot();
 		// Shot(Shot const &rfs);
 		// Shot	&operator=( Shot const &rfs );
-
 };
 
 #endif
