@@ -73,6 +73,14 @@ void Viewer::welcome_window()
 	attroff(COLOR_PAIR(1));
 }
 
+void	Viewer::print_shots(Player* p)
+{
+	for (int i = 0; p->getYPosN(i) != -1 ; ++i)
+	{
+		mvwprintw(_win, p->getYPosN(i), p->getXPosN(i),"o");
+	}
+}
+
 int Viewer::onScreen(Player* p , int ch, Viewer *v)
 {
 
@@ -97,10 +105,7 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 			break;
 		wclear(_win);
 		draw_borders(_win);
-		// background();
-		print_shots();
-		// if (p->getYPosN(0) != -1)
-		// 	mvwprintw(_win, p->getYPosN(0), p->getXPosN(0),"o");
+		print_shots(p);
 		mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
 		wrefresh(_win);
 	}

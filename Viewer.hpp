@@ -22,6 +22,7 @@ class Viewer
 		void 		draw_borders(WINDOW *screen);
 		void 		welcome_window();
 		int 		onScreen(Player* p, int ch, Viewer *v);
+		void	print_shots(Player* p);
 };
 
 #endif
