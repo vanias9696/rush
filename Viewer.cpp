@@ -77,19 +77,22 @@ void Viewer::welcome_window()
 
 void	Viewer::print_shots(Player* p)
 {
+	init_pair(2, COLOR_RED, COLOR_BLACK);
 	for (int i = 0; p->getYPosN(i) != -1 ; ++i)
 	{
+		wattron(_win, COLOR_PAIR(2));
 		mvwprintw(_win, p->getYPosN(i), p->getXPosN(i),"o");
+		wattroff(_win, COLOR_PAIR(2));
 	}
 }
 
-// void 	Viewer::print_background(Background *b)
-// {
-// 	for (int i = 0; i < b->getNumStars(); ++i)
-// 	{
-// 		mvwprintw(_win, b->_stars->star->getXPos(), b->_stars->star->getYPos();,"*");
-// 	}
-// }
+void 	Viewer::print_background(Background *b)
+{
+	for (int i = 0; i < b->getNumStars(); ++i)
+	{
+		mvwprintw(_win, b->getYPosN(i), b->getXPosN(i), "*");
+	}
+}
 
 int Viewer::onScreen(Player* p , int ch, Viewer *v)
 {
@@ -116,11 +119,22 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 			break;
 		if (i % 300 == 0)
 		{
-			// p->setYPos(p->getYPos() - 1);
+			p->moving_shot();
 		}
-		wclear(_win);
+		if (i % 700 == 0)
+		{
+			_bg->moving_star();
+		}
+		// wclear(_win);
+		for (int i = 0; i < 120; ++i)
+		{
+			for (int j = 0; j < 50; ++j)
+			{
+				mvwaddch(_win, j, i, ' ');
+			}
+		}
+		print_background(_bg);
 		draw_borders(_win);
-		// print_background(_bg);
 		print_shots(p);
 		mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
 		wrefresh(_win);

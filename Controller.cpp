@@ -1,12 +1,10 @@
 #include "Header.hpp"
 
 Controller::Controller(){
-	
 }
 
 Controller::~Controller()
 {
-	
 }
 
 Controller::Controller(Controller const &src)
@@ -17,7 +15,6 @@ Controller::Controller(Controller const &src)
 
 Controller & Controller::operator=( Controller const &rhs )
 {
-	//ДАЛЬШЕ КОСТЫЛЬ
 	if(this != &rhs)
 		return *this;
 	return *this;

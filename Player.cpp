@@ -80,16 +80,16 @@ int			Player::getYPosN(int N)
 	return (tmp->shot->getYPos());
 }
 
-void	Player::delete_shot(int i, t_list *delNext)
+void	Player::delete_shot(int i, t_shot *delNext)
 {
-	t_list	*tmp;
+	t_shot	*tmp;
 
 	tmp = _list;
 	if (i == 0)
 	{
 		tmp = tmp->next;
 		delete _list->shot;
-		delete _list;
+		//delete _list;
 		*(_list) = *tmp;
 		return ;
 	}
@@ -106,7 +106,9 @@ void	Player::moving_shot()
 {
 	t_shot	*tmp;
 
-	tmp = _listl
+	if (_list == 0)
+		return ;
+	tmp = _list;
 	while (tmp->shot->getYPos() - 1 <= 0)
 	{
 		delete_shot(0, tmp);
@@ -117,6 +119,7 @@ void	Player::moving_shot()
 		tmp->next->shot->setYPos(tmp->next->shot->getYPos() - 1);
 		if (tmp->next->shot->getYPos() <= 0)
 			delete_shot(1, tmp);
+		tmp = tmp->next;
 	}
 }
 

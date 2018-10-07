@@ -12,6 +12,7 @@
 #include "Controller.hpp"
 #include "Viewer.hpp"
 #include "Background.hpp"
+#include <stdio.h>
 
 
 #endif

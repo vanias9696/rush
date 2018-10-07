@@ -20,6 +20,8 @@ class Player : public Object
 		Player();
 		~Player();
 		void	haveShot();
+		void	delete_shot(int i, t_shot *delNext);
+		void	moving_shot();
 		// Player(Player const &rfs);
 		// Player	&operator=( Player const &rfs );
 		int			getXPosN(int N);

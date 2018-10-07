@@ -17,11 +17,13 @@ class Background : public Object
 		Background(Background const & rhs);
 		Background			&operator=( Background const &rfs );
 
-		void	haveStar(void);
+		void	haveStar();
 		int		getNumStars(void);
-		int		getXPos(void);
-		int		getYPos(void);
+		int		getXPosN(int N);
+		int		getYPosN(int N);
 
+		void	new_star(t_star *tmp);
+		void	moving_star();
 
 	private:
 		t_star	*_stars;
