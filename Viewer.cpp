@@ -108,17 +108,23 @@ void	Viewer::print_shots(Player* p)
 
 void 	Viewer::print_background(Background *b)
 {
+	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
 	for (int i = 0; i < b->getNumStars(); ++i)
 	{
+		wattron(_win, COLOR_PAIR(4));
 		mvwprintw(_win, b->getYPosN(i), b->getXPosN(i), "*");
+		wattroff(_win, COLOR_PAIR(4));
 	}
 }
 
 void	Viewer::print_enemy(Enemy* e)
 {
+	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 	for (int i = 0; e->getYPosN(i) != -1 ; ++i)
 	{
+		wattron(_win, COLOR_PAIR(5));
 		mvwprintw(_win, e->getYPosN(i), e->getXPosN(i),"\\AAA/");
+		wattroff(_win, COLOR_PAIR(5));
 	}
 }
 
@@ -140,7 +146,7 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 		return 0;
 	wclear(_win);
 	v->draw_borders(_win);
-	mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
+	mvwprintw(_win, p->getYPos(), p->getXPos(),"###");
 	wrefresh(_win);
 	e->addRow();
 	i = 0;
@@ -157,7 +163,7 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 			p->haveShot();
 		else if(ch == 'q' || ch == 'Q')
 			break;
-		if (i % 1000 == 0)
+		if (i % 2000 == 0)
 			_bg->moving_star();
 		if (i % 900 == 0)
 			e->move();
@@ -167,6 +173,8 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 		{
 			p->moving_shot();
 			p->check_kill(e);
+			if (e->check_player(p) == -1)
+				break;
 		}
 
 		my_clear(_win);
@@ -174,7 +182,7 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 		draw_borders(_win);
 		print_shots(p);
 		print_enemy(e);
-		mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
+		mvwprintw(_win, p->getYPos(), p->getXPos(),"###");
 		wrefresh(_win);
 	}
 	return (0);

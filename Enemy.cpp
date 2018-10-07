@@ -124,9 +124,23 @@ int			Enemy::getYPosN(int N)
 	return (tmp->enemy->getYPos());
 }
 
-
-
-
+int	Enemy::check_player(Player *p)
+{
+	t_enemy	*tmp;
+	
+	tmp = _list;
+	while (tmp)
+	{
+		if ((p->getYPos() == tmp->enemy->getYPos()) &&
+			(tmp->enemy->getXPos() - p->getXPos() >= -4 &&
+			 tmp->enemy->getXPos() - p->getXPos() <= 2))
+		{
+			return (-1);
+		}
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 
 

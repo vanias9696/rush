@@ -20,6 +20,7 @@ class Enemy: public Object
 		void		delete_enemy(int i, t_enemy *delNext);
 		int			getXPosN(int N);
 		int			getYPosN(int N);
+		int			check_player(Player *p);
 
 		t_enemy *_list;
 
