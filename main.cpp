@@ -5,9 +5,10 @@ int main()
 {
 	Viewer *v = new Viewer();
 	Player* p = new Player();
+	Enemy*	e = new Enemy();
 	Controller *c = new Controller();
 
-	c->game_loop(p, v);
+	c->game_loop(p, v, e);
 
 	delete v;
 	delete p;

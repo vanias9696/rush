@@ -114,6 +114,14 @@ void 	Viewer::print_background(Background *b)
 	}
 }
 
+void	Viewer::print_enemy(Enemy* e)
+{
+	for (int i = 0; e->getYPosN(i) != -1 ; ++i)
+	{
+		mvwprintw(_win, e->getYPosN(i), e->getXPosN(i),"\\AAA/");
+	}
+}
+
 void	Viewer::my_clear(WINDOW *_win)
 {
 	for (int i = 0; i < 120; ++i)
@@ -125,7 +133,7 @@ void	Viewer::my_clear(WINDOW *_win)
 	}
 }
 
-int Viewer::onScreen(Player* p , int ch, Viewer *v)
+int Viewer::onScreen(Player* p , int ch, Viewer *v, Enemy *e)
 {
 	int i;
 	if(ch == 'q' || ch =='Q') 
@@ -134,6 +142,7 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 	v->draw_borders(_win);
 	mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
 	wrefresh(_win);
+	e->addRow();
 	i = 0;
 	while (1)
 	{
@@ -150,12 +159,19 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 			break;
 		if (i % 300 == 0)
 			p->moving_shot();
-		if (i % 700 == 0)
+		if (i % 1000 == 0)
 			_bg->moving_star();
+		if (i % 900 == 0)
+			e->move();
+		if (i % 2700 == 0)
+			e->addRow();
+//
+//
 		my_clear(_win);
 		print_background(_bg);
 		draw_borders(_win);
 		print_shots(p);
+		print_enemy(e);
 		mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
 		wrefresh(_win);
 	}
