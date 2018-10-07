@@ -10,7 +10,6 @@ Viewer::Viewer(){
 	start_color();
 
 	_win = newwin(50, 120, 0, 0);
-	_time = std::time(nullptr);
 	welcome_window();
 	draw_borders(_win);
 }
@@ -35,7 +34,6 @@ Viewer & Viewer::operator=( Viewer const &rhs )
 }
 
 WINDOW*	Viewer::getWindow() const{return _win;}
-std::time 	Viewer::getTime(void){return _time};
 
 void Viewer::draw_borders(WINDOW *screen)
 { 
@@ -109,5 +107,11 @@ int Viewer::onScreen(Player* p , int ch, Viewer *v)
 		mvwprintw(_win, p->getYPos(), p->getXPos(),"---");
 		wrefresh(_win);
 	}
+
+	// std::time_t now = std::time(nullptr);
+	// std::time_t sec = now - _time;
+
+	//  std::cout << std::asctime(std::localtime(&result))
+ //              << result << " seconds since the Epoch\n";
 	return (0);
 }

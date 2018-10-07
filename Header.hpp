@@ -3,6 +3,8 @@
 
 #include <string>
 #include <ncurses.h>
+#include <iostream>
+#include <ctime>
 #include "Object.hpp"
 #include "Player.hpp"
 #include "Shot.hpp"

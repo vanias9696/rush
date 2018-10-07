@@ -2,6 +2,7 @@
 
 Controller::Controller(){
 	
+	_time = std::time(nullptr);
 }
 
 Controller::~Controller()
@@ -32,3 +33,5 @@ void Controller::game_loop(Player* p, Viewer *v)
 			break;
 	}
 }
+
+std::time_t Controller::getTime(void){return _time;};
